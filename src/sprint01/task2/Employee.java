@@ -1,7 +1,5 @@
 package sprint01.task2;
 
-import java.util.Arrays;
-
 public class Employee {
     public String fullName;
     public float salary;
@@ -18,15 +16,17 @@ public class Employee {
         Employee[] employees = new Employee[]{emp1, emp2};
 
         String employeesInfo = "";
-        String[] employeesStringArr = new String[employees.length];
 
         int forIndex = 0;
         for (Employee emp:employees) {
-            employeesStringArr[forIndex] = "{fullName: \"" + emp.fullName + "\", salary: " + emp.salary + "}";
+            employeesInfo += (String.format("{fullName: \"%s\", salary: %s}", emp.fullName, emp.salary ));
+            if(forIndex != employees.length - 1) {
+                employeesInfo += ", ";
+            }
             forIndex++;
         }
 
-        employeesInfo = Arrays.toString(employeesStringArr);
+        employeesInfo = "[" + employeesInfo + "]";
 
         System.out.println(employeesInfo); // debug
     }
