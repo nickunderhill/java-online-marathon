@@ -52,17 +52,16 @@ public class TestResults {
             System.out.println();
         }
 
-        System.out.println("===Test Duplicate Emp/Exp===");
-        List<Employee> dupEmpExp = new ArrayList<>();
-        dupEmpExp.add(new Employee("Ivan",10,new BigDecimal("5000.00")));
-        dupEmpExp.add(new Employee("Ivan",10,new BigDecimal("3000.00")));
-        dupEmpExp.add(new Employee("Ivan",9,new BigDecimal("4000.00")));
-        dupEmpExp.add(new Employee("John",9,new BigDecimal("8000.00")));
-        dupEmpExp.add(new Manager("John",9,new BigDecimal("4000.00"),2 ));
+        System.out.println("===Test checkDuplicatePayment===");
+        List<Employee> checkDuplicatePayment = new ArrayList<>();
+        checkDuplicatePayment.add(new Employee("Ivan", 10, new BigDecimal(3000.00)));
+        checkDuplicatePayment.add(new Manager("Petro", 9, new BigDecimal(3000.00), 1.5));
+        checkDuplicatePayment.add(new Employee("Ihor", 5, new BigDecimal(4500.00)));
+        checkDuplicatePayment.add(new Manager("Vasyl", 8, new BigDecimal(2000.00), 2.0));
 
-        List<Employee> newDupEmpExp;
-        dupEmpExp = test.largestEmployees(dupEmpExp);
-        for (Employee e: dupEmpExp) {
+        List<Employee> newCheckDuplicatePayment;
+        newCheckDuplicatePayment = test.largestEmployees(checkDuplicatePayment);
+        for (Employee e: newCheckDuplicatePayment) {
             System.out.print("Name: " + e.getName());
             System.out.print(", Salary: " + e.getPayment());
             System.out.print(", Experience: " + e.getExperience());

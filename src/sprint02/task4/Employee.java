@@ -1,7 +1,6 @@
 package sprint02.task4;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -41,7 +40,7 @@ class Employee {
     }
 
     public BigDecimal getPayment() {
-        return this.basePayment;
+        return this.basePayment.setScale(2);
     }
 
 }
@@ -60,7 +59,8 @@ class Manager extends Employee {
 
     @Override
     public BigDecimal getPayment() {
-        return super.getPayment().multiply(new BigDecimal(Double.toString(coefficient)),new MathContext(6));
+//        return super.getPayment().multiply(new BigDecimal(Double.toString(coefficient)),new MathContext(6));
+        return (super.getPayment().multiply(BigDecimal.valueOf(coefficient))).setScale(2);
     }
 }
 
