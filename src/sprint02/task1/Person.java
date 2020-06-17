@@ -1,9 +1,5 @@
 package sprint02.task1;
 
-/*We know that adult  doesn't have childIDNumber.
-Child doesn't have passportNumber.
-Create a public constructor in each class to initialize all their fields (make the first parameter of type int)*/
-
 class Person {
     int age;
     String healthInfo;
