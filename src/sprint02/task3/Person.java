@@ -113,8 +113,8 @@ class MyUtils {
             }
         }
 
-        List<Person> distinctInts = result.stream().distinct().collect(Collectors.toList());
-        result = distinctInts;
+        List<Person> distinctPersons = result.stream().distinct().collect(Collectors.toList());
+        result = distinctPersons;
 
         return result;
     }
