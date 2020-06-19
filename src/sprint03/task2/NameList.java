@@ -15,11 +15,11 @@ class NameList {
             counter = 0;
         }
 
-        public boolean hasNext(){
+        public boolean hasNext() {
             return counter < names.length;
         }
 
-        public String next(){
+        public String next() {
             if (hasNext()) {
                 return names[counter++];
             } else throw new IndexOutOfBoundsException();
