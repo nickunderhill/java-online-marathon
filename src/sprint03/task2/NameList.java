@@ -1,10 +1,7 @@
 package sprint03.task2;
 
 class NameList {
-    public String[] names;
-
-    private NameList() {
-    }
+    private String[] names = {"Mike", "Emily", "Nick", "Patric", "Sara"};
 
     public Iterator getIterator() {
         return new Iterator();
@@ -12,19 +9,14 @@ class NameList {
 
     public class Iterator {
 
-        private Iterator(){
+        private int counter;
+
+        private Iterator() {
+            counter = 0;
         }
 
-        private NameList nameList = new NameList();
-        int counter = 0;
-
-
-
         public boolean hasNext(){
-            if (counter < 5) {
-                return true;
-            } else return false;
-
+            return counter < names.length;
         }
 
         public String next(){
@@ -35,7 +27,14 @@ class NameList {
     }
 
     public static void main(String[] args) {
-
+        NameList n = new NameList();
+        NameList.Iterator iterator = new NameList().getIterator();
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
     }
 
 }
