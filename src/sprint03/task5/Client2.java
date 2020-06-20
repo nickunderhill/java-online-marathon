@@ -11,19 +11,19 @@ class Client2 {
         SILVER(12) {
             @Override
             public double discount() {
-                return (100 - 12 * 0.35) / 100;
+                return (100 - this.getMonths() * 0.35) / 100;
             }
         },
         GOLD(30) {
             @Override
             public double discount() {
-                return (100 - 30 * 0.35) / 100;
+                return (100 - this.getMonths() * 0.35) / 100;
             }
         },
         PLATINUM(60){
             @Override
             public double discount() {
-                return (100 - 60 * 0.35) / 100;
+                return (100 - this.getMonths() * 0.35) / 100;
             }
         };
 
@@ -44,7 +44,10 @@ class Client2 {
 
 
     public static void main(String[] args) {
+        System.out.println((ClientType.NEW.discount()));
+        System.out.println((ClientType.SILVER.discount()));
         System.out.println((ClientType.GOLD.discount()));
+        System.out.println((ClientType.PLATINUM.discount()));
 
     }
 }
