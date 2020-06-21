@@ -13,27 +13,24 @@ public class TestResults {
         ab.create("Susan", "Brown", "Address #4");
         ab.create("John", "Taylor", "Address #4");
         ab.create("Bob", "Davis", "Address #4");
-
-        System.out.println(ab.read("John", "Brown"));
-        System.out.println(ab.read("Karen", "Davis"));
-        System.out.println(ab.read("Steven", "Taylor"));
-        System.out.println(ab.read("Susan", "Brown"));
-        System.out.println(ab.read("John", "Taylor"));
-        System.out.println(ab.read("Bob", "Davis"));
-
-        System.out.println("===Delete");
-        ab.delete("Steven", "Taylor");
-
-        System.out.println(ab.read("John", "Brown"));
-        System.out.println(ab.read("Karen", "Davis"));
-        System.out.println(ab.read("Steven", "Taylor"));
-        System.out.println(ab.read("Susan", "Brown"));
-        System.out.println(ab.read("John", "Taylor"));
-        System.out.println(ab.read("Bob", "Davis"));
-
         ab.forEach(System.out::println);
+
+        System.out.println("--DELETE");
+        ab.delete("Steven", "Taylor");
+        ab.forEach(System.out::println);
+
+        System.out.println("--Update");
+        ab.update("Bob", "Davis", "Address #125");
+        ab.forEach(System.out::println);
+
+        System.out.println("--Sort ASC");
         ab.sortedBy(SortOrder.ASC);
         ab.forEach(System.out::println);
+
+        System.out.println("--Sort DESC");
+        ab.sortedBy(SortOrder.DESC);
+        ab.forEach(System.out::println);
+
 
 
 
