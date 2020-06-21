@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 interface DrinkReceipt {
     String getName();
-
     DrinkReceipt addComponent(String componentName, int componentCount);
 }
 
@@ -112,6 +111,7 @@ class Cappuccino extends Caffee {
 class MyUtils {
     public Map<String, Double> averageRating(List<Caffee> coffees) {
         return coffees.stream()
-                .collect(Collectors.groupingBy(Caffee::getName, Collectors.averagingInt(Caffee::getRating)));
+                .collect(Collectors.groupingBy(Caffee::getName,
+                        Collectors.averagingInt(Caffee::getRating)));
     }
 }
