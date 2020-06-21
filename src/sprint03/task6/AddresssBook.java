@@ -9,7 +9,6 @@ class AddressBook implements Iterable {
 
     public AddressBook(int capacity) {
         this.addressBook = new NameAddressPair[capacity];
-        System.out.println(size());
     }
 
     public boolean create(String firstName, String lastName, String address) {
@@ -47,6 +46,7 @@ class AddressBook implements Iterable {
         if (i > -1) {
             System.arraycopy(addressBook, i+1, addressBook, i, size()-i-1);
             addressBook[size()-1] = null;
+            counter--;
             return true;
         }
         return false;
@@ -82,8 +82,8 @@ class AddressBook implements Iterable {
                 if (result == 0) {
                     result = o1.person.lastName.compareTo(o2.person.lastName);
                 }
-                return sortOrder == SortOrder.ASC ? result : -result;
-            }
+                return sortOrder == sortOrder.ASC ? result : -result;
+            }git
         });
 
     }
@@ -140,7 +140,7 @@ class AddressBook implements Iterable {
 
         @Override
         public boolean hasNext() {
-            if (counter < size()-1)
+            if (counter < size() && addressBook[counter] != null)
                 return true;
             else
                 return false;
@@ -148,7 +148,7 @@ class AddressBook implements Iterable {
 
         @Override
         public Object next() {
-            if (this.hasNext() && addressBook[counter] != null) {
+            if (this.hasNext()) {
                 String s = "First name:"
                         + addressBook[counter].person.firstName
                         + ",Last name:"
