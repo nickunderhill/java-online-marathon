@@ -37,10 +37,13 @@ class Pizza {
 
     public static class PizzaBuilder {
 
+        private Pizza pizza;
+
         private PizzaBuilder() {
+            pizza = new Pizza();
         }
 
-        private Pizza pizza = new Pizza();
+
 
         public PizzaBuilder addCheese(String cheese) {
             pizza.cheese = cheese;
