@@ -83,7 +83,7 @@ class AddressBook implements Iterable {
                     result = o1.person.lastName.compareTo(o2.person.lastName);
                 }
                 return sortOrder == sortOrder.ASC ? result : -result;
-            }git
+            }
         });
 
     }
