@@ -84,6 +84,11 @@ class EmployeeComparator implements Comparator<Employee>  {
 
     @Override
     public int compare(Employee o1, Employee o2) {
+        if (!o1.getName().equals(o2.getName())) {
+            return o1.getName().compareTo(o2.getName());
+        } else if(o1.getName().equals(o2.getName()) && o1.age != o2.age) {
+            return o1.age - o2.age;
+        }
         return (int)o1.getSalary() - (int)o2.getSalary();
     }
 }
@@ -92,20 +97,20 @@ class DeveloperComparator implements Comparator<Developer> {
 
     @Override
     public int compare(Developer o1, Developer o2) {
-        return 0;
+        if (!o1.getName().equals(o2.getName())) {
+            return o1.getName().compareTo(o2.getName());
+        } else if(o1.getName().equals(o2.getName()) && o1.age != o2.age) {
+            return o1.age - o2.age;
+        } else if (o1.getName().equals(o2.getName()) && o1.age == o2.age && !(o1.getLevel().equals(o2.getLevel()))) {
+            return o1.getLevel().compareTo(o2.getLevel());
+        }
+        return (int)o1.getSalary() - (int)o2.getSalary();
     }
 }
 
 class Utility {
 
-    public Utility() {
-    }
-
-    public static <T> void sortPeople(T[] array,Comparator<T> comparator) {
+    public static <T extends Person> void sortPeople(T[] array, Comparator<? super T> comparator) {
         Arrays.sort(array, comparator);
     }
-
 }
-
-
-
