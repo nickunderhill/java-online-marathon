@@ -61,9 +61,9 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return firstName.equals(person.firstName) &&
-                lastName.equals(person.lastName) &&
-                idCode.equals(person.idCode);
+        return Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(idCode, person.idCode);
     }
 
     @Override
@@ -78,17 +78,18 @@ public class Person {
 
     private boolean validateName(String s) {
         boolean result = false;
-        if (Character.isLowerCase(s.charAt(0))) {
-            return false;
-        }
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z' || c == '-' || c == ' ')) {
-                result = true;
-            } else {
-                result = false;
-                break;
+        if (s.charAt(0) >= 'A' && s.charAt(0) <= 'Z') {
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z' || c == '-' || c == ' ')) {
+                    result = true;
+                } else {
+                    result = false;
+                    break;
+                }
             }
+        } else {
+            return false;
         }
         return result;
     }
