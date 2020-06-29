@@ -23,9 +23,9 @@ public class App {
 
     //Test
     public static void main(String[] args) {
-        double[] oldArr = {1.0,1.5,2.5,3.5};
+        double[] oldArr = {1.0, 1.5, 2.5, 3.5};
         double[] newArr;
-        newArr = getChanged(oldArr,cons);
+        newArr = getChanged(oldArr, cons);
         Arrays.stream(oldArr).forEach(System.out::println);
         Arrays.stream(newArr).forEach(System.out::println);
 
