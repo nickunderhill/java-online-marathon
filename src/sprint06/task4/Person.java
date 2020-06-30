@@ -10,11 +10,7 @@ class Person{
         this.name = name;
     }
 
-    Person(String name, String product, int discount) {
-        this.name = name;
-    }
-
-    DecisionMethod<String, Integer> goShopping = (product, discount) -> {
+    public DecisionMethod<String, Integer> goShopping = (product, discount) -> {
         return product.equals("product1") && discount == 10;
     };
 }
@@ -30,11 +26,10 @@ class Shop{
     public int sale(String product, int percent) {
         int count = 0;
         for (DecisionMethod<String,Integer> d: clients) {
-            if (d.decide(product,percent)){
+            if (d.decide(product, percent)){
                 count++;
             };
         }
         return count;
-
     }
 }
