@@ -11,6 +11,8 @@ public class TestResults {
         Person p3 = new Person("George");
         s.clients.add(p3.goShopping);
         Person p4 = new Person("Brad");
-        System.out.println(s.sale("product1", 101));
+        s.clients.add(p4.goShopping);
+        System.out.println(s.sale("product1", 11));
+        System.out.println(s.sale("product1", 10));
     }
 }
