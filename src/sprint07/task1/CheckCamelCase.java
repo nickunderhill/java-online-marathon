@@ -8,22 +8,15 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class CheckCamelCase {
     public static final String CAMELCASE_PATTERN = "[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?";
 
     static boolean checkAndPrint(Class clazz) {
-        boolean result = true;
-
-        //Filter
-        List<Method> methodList = Arrays
-                .stream(clazz.getMethods())
+        final int[] countErr = {0};
+        Arrays.stream(clazz.getDeclaredMethods())
                 .filter(method -> method.isAnnotationPresent(CamelCase.class)
                         && !Pattern.matches(CAMELCASE_PATTERN, method.getName()))
-                .collect(Collectors.toList());
-        //Print
-        methodList.stream()
                 .map(
                         method -> String.format(
                                 "method %s.%s doesn't satisfy camelCase naming convention",
@@ -31,9 +24,12 @@ public class CheckCamelCase {
                                 method.getName()
                         )
                 )
-                .forEach(System.out::println);
-
-        return result;
+                .forEach(
+                        msg -> {
+                            System.out.println(msg);
+                            countErr[0]++;
+                        });
+        return countErr[0] == 0;
     }
 }
 
