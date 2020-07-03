@@ -4,10 +4,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class TestResult {
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
-//        TestSuitHandler.run(Class1.class);
-//        TestSuitHandler.run(Class2.class);
-//        TestSuitHandler.run(Class3.class);
-//        TestSuitHandler.run(Class4.class);
+        TestSuitHandler.run(Class1.class);
+        TestSuitHandler.run(Class2.class);
+        TestSuitHandler.run(Class3.class);
+        TestSuitHandler.run(Class4.class);
         TestSuitHandler.run(Suite1.class);
     }
 }

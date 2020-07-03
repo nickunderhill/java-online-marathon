@@ -4,7 +4,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
 public class TestSuitHandler {
@@ -13,35 +12,40 @@ public class TestSuitHandler {
             if (!clazz.isAnnotationPresent(TestSuite.class)) {
                 System.out.println(
                         "Class " + clazz.getName() + " isn't annotated");
-                return;
-            }
+            } else {
+                Object instance = clazz.getDeclaredConstructor().newInstance();
+                String[] annotatedList = clazz.getDeclaredAnnotation(TestSuite.class).value();
 
-            Object instance = clazz.getDeclaredConstructor().newInstance();
-
-            String[] annotatedList = clazz.getDeclaredAnnotation(TestSuite.class).value();
-
-        for (String s : annotatedList) {
-            try {
-                if (Modifier.isPublic(clazz.getDeclaredMethod(s).getModifiers())
-                        && !Modifier.isStatic(clazz.getDeclaredMethod(s).getModifiers())) {
-                    System.out.println("\t -- Method " + clazz.getSimpleName() + "." + s + " started --");
-                    clazz.getDeclaredMethod(s).invoke(instance);
-                    System.out.println("\t -- Method " + clazz.getSimpleName() + "." + s + " finished --");
-                } else {
-                    throw new NoSuchMethodException();
+                for (String mName : annotatedList) {
+                    try {
+                        if (validateMods(clazz, mName)) {
+                            System.out.println("\t -- Method "
+                                    + clazz.getSimpleName() + "." + mName
+                                    + " started --");
+                            clazz.getDeclaredMethod(mName).invoke(instance);
+                            System.out.println("\t -- Method "
+                                    + clazz.getSimpleName() + "." + mName
+                                    + " finished --");
+                        } else {
+                            throw new NoSuchMethodException();
+                        }
+                    } catch (NoSuchMethodException e) {
+                        System.out.println(
+                                "Method with name "
+                                        + mName
+                                        + " doesn't exists or not public in class "
+                                        + clazz.getSimpleName());
+                    }
                 }
-            } catch (NoSuchMethodException e) {
-                System.out.println(
-                        "Method with name "
-                                + s
-                                + " doesn't exists or not public in class "
-                                + clazz.getSimpleName());
             }
-        }
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException | NoSuchMethodException e) {
+        } catch (ReflectiveOperationException e) {
             System.out.println(e);
         }
     }
+    private static boolean validateMods(Class<?> clazz, String mName) throws NoSuchMethodException {
+        return Modifier.isPublic(clazz.getDeclaredMethod(mName).getModifiers())
+                && !Modifier.isStatic(clazz.getDeclaredMethod(mName).getModifiers());
+        }
 }
 
 @Retention(RetentionPolicy.RUNTIME)
