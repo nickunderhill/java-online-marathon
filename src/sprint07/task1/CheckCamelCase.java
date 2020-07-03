@@ -16,20 +16,14 @@ public class CheckCamelCase {
     static boolean checkAndPrint(Class clazz) {
         boolean result = true;
 
+        //Filter
         List<Method> methodList = Arrays
                 .stream(clazz.getMethods())
-                .filter(method -> method.isAnnotationPresent(CamelCase.class))
+                .filter(method -> method.isAnnotationPresent(CamelCase.class)
+                        && !Pattern.matches(CAMELCASE_PATTERN, method.getName()))
                 .collect(Collectors.toList());
-
-        List<Method> wrongMethodList = new ArrayList<>();
-        for (Method method1 : methodList) {
-            if (!Pattern.matches(CAMELCASE_PATTERN, method1.getName())) {
-                wrongMethodList.add(method1);
-                result = false;
-            }
-        }
-
-        wrongMethodList.stream()
+        //Print
+        methodList.stream()
                 .map(
                         method -> String.format(
                                 "method %s.%s doesn't satisfy camelCase naming convention",
