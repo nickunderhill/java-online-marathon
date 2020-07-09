@@ -1,19 +1,20 @@
 package sprint09.task3;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class App {
     public static void writeFile(String filename, String text) {
         try {
             FileOutputStream output = new FileOutputStream(filename);
-            output.write(StringToBits(text).getBytes());
+            output.write(StringToBinary(text).getBytes());
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static String StringToBits(String str) {
+    private static String StringToBinary(String str) {
         StringBuilder result = new StringBuilder();
         byte[] bytes = str.getBytes();
         for (byte b : bytes) {
