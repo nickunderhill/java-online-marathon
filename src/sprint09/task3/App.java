@@ -4,14 +4,10 @@ import java.io.*;
 
 public class App {
     public static void writeFile(String filename, String text) {
-        FileOutputStream output = null;
         try {
-            output = new FileOutputStream(filename);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
+            FileOutputStream output = new FileOutputStream(filename);
             output.write(StringToBits(text).getBytes());
+            output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,7 +29,7 @@ public class App {
 
     //Test
     public static void main(String[] args) {
-        String file = "resources/1.txt";
+        String file = "resources/2.txt";
         writeFile(file, "Hello!");
         writeFile(file, "Hello World!");
     }
