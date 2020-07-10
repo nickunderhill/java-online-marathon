@@ -4,16 +4,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class MyUtils {
     public Stream<String> nameList(Map<String, Stream<String>> map) {
-        Stream<String> stringStream = map
+        return map
                 .values()
                 .stream()
-                .flatMap(Function.identity());
-        return stringStream
+                .flatMap(s -> s)
                 .filter(Objects::nonNull)
                 .map(s -> s.replace(" ", ""))
                 .filter(s -> !s.equals(""))
