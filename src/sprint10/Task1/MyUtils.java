@@ -15,7 +15,8 @@ public class MyUtils {
 
     public Connection createConnection() throws SQLException {
         DriverManager.registerDriver(new org.h2.Driver());
-        connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/test", "sa", "");
+        connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+//        connection = DriverManager.getConnection("jdbc:h2:mem:test", "", "");
         return connection;
     }
 
@@ -33,12 +34,12 @@ public class MyUtils {
     }
 
     public void createSchema(String schemaName) throws SQLException {
-        statement.execute("CREATE SCHEMA " + schemaName + ";");
         this.schemaName = schemaName;
+        statement.execute("CREATE SCHEMA " + schemaName + ";");
     }
 
     public void dropSchema() throws SQLException {
-        statement.execute("DROP SCHEMA " + schemaName + ";");
+        statement.execute("DROP SCHEMA " + this.schemaName + " CASCADE;");
     }
 
     public void useSchema() throws SQLException {
@@ -102,60 +103,123 @@ public class MyUtils {
     public void insertTableProjects(String projectName, String directionName) throws SQLException {
         statement.execute(
                 "INSERT INTO Projects(projectName, directionId) VALUES('" + projectName +
-                        "," + directionName + "');" //TODO getDirectionName?
+                        "','" + getDirectionId(directionName) + "');"
         );
     }
 
     public void insertTableEmployee(String firstName, String roleName, String projectName) throws SQLException {
         statement.execute(
                 "INSERT INTO Employee(firstName, roleId, projectId) VALUES('" + firstName +
-                        "," + roleName +
-                        "," + projectName + "');" //TODO getRoleId getProjectId?
+                        "','" + getRoleId(roleName) +
+                        "','" + getProjectId(projectName) + "');"
         );
     }
 
     public int getRoleId(String roleName) throws SQLException {
-        // code
+        int result = -1;
+        statement.execute("SELECT ID from ROLES WHERE ROLENAME = '" + roleName + "';");
+        if (statement.getResultSet().next()) {
+            result = statement.getResultSet().getInt("id");
+        }
+        return result;
     }
 
     public int getDirectionId(String directionName) throws SQLException {
-        // code
+        int result = -1;
+        statement.execute("SELECT ID from DIRECTIONS WHERE DIRECTIONNAME = '" + directionName + "';");
+        if (statement.getResultSet().next()) {
+            result = statement.getResultSet().getInt("id");
+        }
+        return result;
     }
 
     public int getProjectId(String projectName) throws SQLException {
-        // code
+        int result = -1;
+        statement.execute("SELECT ID from PROJECTS WHERE PROJECTNAME = '" + projectName + "';");
+        if (statement.getResultSet().next()) {
+            result = statement.getResultSet().getInt("id");
+        }
+        return result;
     }
 
     public int getEmployeeId(String firstName) throws SQLException {
-        // code
+        int result = -1;
+        statement.execute("SELECT ID from EMPLOYEE WHERE firstName = '" + firstName + "';");
+        if (statement.getResultSet().next()) {
+            result = statement.getResultSet().getInt("id");
+        }
+        return result;
     }
 
     public List<String> getAllRoles() throws SQLException {
-        // code
+        List<String> rolesList = new ArrayList<>();
+        statement.execute("SELECT DISTINCT roleName from ROLES;");
+        while (statement.getResultSet().next()) {
+            rolesList.add(statement.getResultSet().getString("roleName"));
+        }
+        return rolesList;
     }
 
     public List<String> getAllDirestion() throws SQLException {
-        // code
+        List<String> directionList = new ArrayList<>();
+        statement.execute("SELECT DISTINCT directionName from Directions;");
+        while (statement.getResultSet().next()) {
+            directionList.add(statement.getResultSet().getString("directionName"));
+        }
+        return directionList;
     }
 
     public List<String> getAllProjects() throws SQLException {
-        // code
+        List<String> projectList = new ArrayList<>();
+        statement.execute("SELECT DISTINCT projectName from Projects;");
+        while (statement.getResultSet().next()) {
+            projectList.add(statement.getResultSet().getString("projectName"));
+        }
+        return projectList;
     }
 
     public List<String> getAllEmployee() throws SQLException {
-        // code
+        List<String> employeeList = new ArrayList<>();
+        statement.execute("SELECT DISTINCT firstName from Employee;");
+        while (statement.getResultSet().next()) {
+            employeeList.add(statement.getResultSet().getString("firstName"));
+        }
+        return employeeList;
     }
 
     public List<String> getAllDevelopers() throws SQLException {
-        // code
+        List<String> developersList = new ArrayList<>();
+        statement.execute(
+                "SELECT firstName from Employee WHERE roleId =" + getRoleId("Developer") + ";"
+        );
+        while (statement.getResultSet().next()) {
+            developersList.add(statement.getResultSet().getString("firstName"));
+        }
+        return developersList;
     }
 
     public List<String> getAllJavaProjects() throws SQLException {
-        // code
+        List<String> projectsList = new ArrayList<>();
+        statement.execute(
+                "SELECT  projectName from Projects WHERE directionId =" + getDirectionId("Java") + ";"
+        );
+        while (statement.getResultSet().next()) {
+            projectsList.add(statement.getResultSet().getString("projectName"));
+        }
+        return projectsList;
     }
 
     public List<String> getAllJavaDevelopers() throws SQLException {
-        // code
+        List<String> javaDevelopersList = new ArrayList<>();
+        statement.execute(
+                "SELECT firstName from Employee WHERE roleId = " +
+                        getRoleId("Developer") +
+                        " AND projectId IN (SELECT id FROM Projects WHERE directionId = " +
+                        getDirectionId("Java") + ");"
+        );
+        while (statement.getResultSet().next()) {
+            javaDevelopersList.add(statement.getResultSet().getString("firstName"));
+        }
+        return javaDevelopersList;
     }
-
 }
