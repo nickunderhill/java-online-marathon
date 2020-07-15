@@ -54,10 +54,11 @@ public class TestResult {
             List<String> javaDevelopers = myUtils.getAllJavaDevelopers();
             System.out.println(javaDevelopers.toString());
 
+            myUtils.dropSchema();
+            myUtils.closeConnection();
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            myUtils.dropSchema();
         }
     }
 }
