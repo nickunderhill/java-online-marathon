@@ -17,7 +17,10 @@ public class MyUtils {
     }
 
     public void closeConnection() throws SQLException {
-        connection.close();
+        if (connection != null && connection.isClosed()) {
+            connection.close();
+        }
+        connection = null;
     }
 
     public Statement createStatement() throws SQLException {
@@ -27,6 +30,7 @@ public class MyUtils {
 
     public void closeStatement() throws SQLException {
         statement.close();
+
     }
 
     public void createSchema(String schemaName) throws SQLException {
@@ -246,7 +250,7 @@ public class MyUtils {
     public List<String> getAllDevelopers() {
         List<String> developersList = new ArrayList<>();
         String sql = "SELECT firstName from Employee WHERE roleId =?;";
-        try (PreparedStatement ps  = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, getRoleId("Developer"));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -260,8 +264,8 @@ public class MyUtils {
 
     public List<String> getAllJavaProjects() throws SQLException {
         List<String> projectsList = new ArrayList<>();
-        String sql = "SELECT  projectName from Projects WHERE directionId =?;";
-        try (PreparedStatement ps  = connection.prepareStatement(sql)) {
+        String sql = "SELECT DISTINCT projectName from Projects WHERE directionId =?;";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, getDirectionId("Java"));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -275,11 +279,15 @@ public class MyUtils {
 
     public List<String> getAllJavaDevelopers() throws SQLException {
         List<String> javaDevelopersList = new ArrayList<>();
-        String sql = "SELECT firstName from Employee WHERE roleId =? " +
-                "AND projectId IN (SELECT id FROM Projects WHERE directionId =?);";
-        try (PreparedStatement ps  = connection.prepareStatement(sql)) {
-            ps.setInt(1, getRoleId("Developer"));
-            ps.setInt(2, getDirectionId("Java"));
+        String sql = "SELECT e.firstName\n" +
+                "from Employee e\n" +
+                "         JOIN Projects p ON e.projectId = p.id\n" +
+                "         JOIN Directions d ON p.directionId = d.id\n" +
+                "         JOIN Roles r ON e.roleId = r.id\n" +
+                "WHERE r.roleName = ? AND d.directionName = ?;";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, "Developer");
+            ps.setString(2, "Java");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 javaDevelopersList.add(rs.getString("firstName"));
