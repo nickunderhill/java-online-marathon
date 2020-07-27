@@ -1,10 +1,14 @@
-package sprint02.task6;
+package com.softserve.edu.sprint02.task6;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 abstract class Shape {
-    private String name;
+    private final String name;
+
     public Shape(String name) {
         this.name = name;
     }
@@ -28,8 +32,9 @@ abstract class Shape {
         return Objects.hash(getName());
     }
 }
+
 class Circle extends Shape {
-    private double radius;
+    private final double radius;
 
     public Circle(String name, double radius) {
         super(name);
@@ -44,10 +49,12 @@ class Circle extends Shape {
         return radius;
     }
 }
+
 class Rectangle extends Shape {
-    private double height;
-    private double witdth;
-    public Rectangle(String name,double height, double witdth) {
+    private final double height;
+    private final double witdth;
+
+    public Rectangle(String name, double height, double witdth) {
         super(name);
         this.height = height;
         this.witdth = witdth;
@@ -66,6 +73,7 @@ class Rectangle extends Shape {
     }
 
 }
+
 class MyUtils {
     public List<Shape> maxAreas(List<Shape> shapes) {
         List<Shape> circles = new java.util.ArrayList<Shape>();
@@ -84,10 +92,10 @@ class MyUtils {
             }
 
             if (s instanceof Circle) {
-                circles.add((Circle) s);
+                circles.add(s);
             }
             if (s instanceof Rectangle) {
-                rectangles.add((Rectangle) s);
+                rectangles.add(s);
             }
         }
 
@@ -107,10 +115,10 @@ class MyUtils {
         }
 
         for (Shape s : shapes) {
-            if (s instanceof Circle && ((Circle) s).getArea() == maxCircleArea) {
+            if (s instanceof Circle && s.getArea() == maxCircleArea) {
                 result.add(s);
             }
-            if (s instanceof Rectangle && ((Rectangle) s).getArea() == maxRectangleArea) {
+            if (s instanceof Rectangle && s.getArea() == maxRectangleArea) {
                 result.add(s);
             }
         }

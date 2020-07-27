@@ -1,44 +1,8 @@
-package sprint04.task2;
+package com.softserve.edu.sprint04.task2;
 
 import java.util.*;
 
 public class MyUtils {
-    public static class Student {
-        private int id;
-        private String name;
-
-        public Student(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Student student = (Student) o;
-            return id == student.id &&
-                    Objects.equals(name, student.name);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, name);
-        }
-        // Constructor, methods, Code
-    }
-
-    public Set<Student> commonStudents(List<Student> list1, List<Student> list2) {
-        // Code
-        Set<Student> result = new HashSet<>();
-        for (Student s : list1) {
-            if (list2.contains(s)) {
-                result.add(s);
-            }
-        }
-        return result;
-    }
-
     //TEST
     public static void main(String[] args) {
         List<Student> list1 = new ArrayList<>();
@@ -74,5 +38,41 @@ public class MyUtils {
         ) {
             System.out.println(s.id + " " + s.name);
         }
+    }
+
+    public Set<Student> commonStudents(List<Student> list1, List<Student> list2) {
+        // Code
+        Set<Student> result = new HashSet<>();
+        for (Student s : list1) {
+            if (list2.contains(s)) {
+                result.add(s);
+            }
+        }
+        return result;
+    }
+
+    public static class Student {
+        private final int id;
+        private final String name;
+
+        public Student(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Student student = (Student) o;
+            return id == student.id &&
+                    Objects.equals(name, student.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, name);
+        }
+        // Constructor, methods, Code
     }
 }

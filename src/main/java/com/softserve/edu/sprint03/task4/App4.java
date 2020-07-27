@@ -1,13 +1,6 @@
-package sprint03.task4;
+package com.softserve.edu.sprint03.task4;
 
 class App4 {
-
-    enum LineType {
-        SOLID,
-        DOTTED,
-        DASHED,
-        DOUBLE
-    }
 
     public static String drawLine(LineType lineType) {
         return "The line is "
@@ -18,5 +11,12 @@ class App4 {
     public static void main(String[] args) {
         LineType line = LineType.SOLID;
         System.out.println(drawLine(line));
+    }
+
+    enum LineType {
+        SOLID,
+        DOTTED,
+        DASHED,
+        DOUBLE
     }
 }

@@ -1,24 +1,26 @@
-package sprint02.task4;
+package com.softserve.edu.sprint02.task4;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TestResults {
     public static void main(String[] args) {
         MyUtils test = new MyUtils();
 
         List<Employee> workers = new java.util.ArrayList<>(Collections.emptyList());
-        workers.add(new Employee("Ivan",10,new BigDecimal("3000.00")));
-        workers.add(new Manager("Petro",9,new BigDecimal("3000.00"),1.5));
-        workers.add(new Employee("Stepan",8,new BigDecimal("4000.00")));
-        workers.add(new Employee("Andriy",7,new BigDecimal("3500.00")));
-        workers.add(new Employee("Ihor",5,new BigDecimal("4500.00")));
-        workers.add(new Manager("Vasyl",8,new BigDecimal("2000.00"),2.0));
+        workers.add(new Employee("Ivan", 10, new BigDecimal("3000.00")));
+        workers.add(new Manager("Petro", 9, new BigDecimal("3000.00"), 1.5));
+        workers.add(new Employee("Stepan", 8, new BigDecimal("4000.00")));
+        workers.add(new Employee("Andriy", 7, new BigDecimal("3500.00")));
+        workers.add(new Employee("Ihor", 5, new BigDecimal("4500.00")));
+        workers.add(new Manager("Vasyl", 8, new BigDecimal("2000.00"), 2.0));
 
         System.out.println("===Test base===");
         List<Employee> newWorkers;
         newWorkers = test.largestEmployees(workers);
-        for (Employee e: newWorkers) {
+        for (Employee e : newWorkers) {
             System.out.print("Name: " + e.getName());
             System.out.print(", Salary: " + e.getPayment());
             System.out.print(", Experience: " + e.getExperience());
@@ -26,13 +28,13 @@ public class TestResults {
         }
 
         List<Employee> originList = new ArrayList<>();
-        originList.add(new Employee("Ivan",10,new BigDecimal("3000.00")));
-        originList.add(new Manager("Petro",9,new BigDecimal("3000.00"),1.5));
+        originList.add(new Employee("Ivan", 10, new BigDecimal("3000.00")));
+        originList.add(new Manager("Petro", 9, new BigDecimal("3000.00"), 1.5));
 
         System.out.println("===Test One employee");
 
         List<Employee> oneEmp = new ArrayList<>();
-        oneEmp.add(new Employee("Ivan",10,new BigDecimal("3000.00")));
+        oneEmp.add(new Employee("Ivan", 10, new BigDecimal("3000.00")));
 
         new MyUtils().largestEmployees(oneEmp);
         System.out.println(oneEmp.get(0).getName());
@@ -40,12 +42,12 @@ public class TestResults {
 
         System.out.println("===Test Duplicate Emp===");
         List<Employee> dupEmp = new ArrayList<>();
-        dupEmp.add(new Employee("Ivan",10,new BigDecimal("3000.00")));
-        dupEmp.add(new Employee("Ivan",10,new BigDecimal("3000.00")));
+        dupEmp.add(new Employee("Ivan", 10, new BigDecimal("3000.00")));
+        dupEmp.add(new Employee("Ivan", 10, new BigDecimal("3000.00")));
 
         List<Employee> newdupEmp;
         newdupEmp = test.largestEmployees(dupEmp);
-        for (Employee e: newdupEmp) {
+        for (Employee e : newdupEmp) {
             System.out.print("Name: " + e.getName());
             System.out.print(", Salary: " + e.getPayment());
             System.out.print(", Experience: " + e.getExperience());
@@ -61,7 +63,7 @@ public class TestResults {
 
         List<Employee> newCheckDuplicatePayment;
         newCheckDuplicatePayment = test.largestEmployees(checkDuplicatePayment);
-        for (Employee e: newCheckDuplicatePayment) {
+        for (Employee e : newCheckDuplicatePayment) {
             System.out.print("Name: " + e.getName());
             System.out.print(", Salary: " + e.getPayment());
             System.out.print(", Experience: " + e.getExperience());

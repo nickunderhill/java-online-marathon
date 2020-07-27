@@ -1,4 +1,4 @@
-package sprint10.Task1;
+package com.softserve.edu.sprint10.Task1;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -34,14 +34,14 @@ public class TestResult {
 
             myUtils.createTableEmployee();
             myUtils.insertTableEmployee("Ivan", "Developer", "MoonLight");
-            myUtils.insertTableEmployee("Petro", "Developer","Sun");
-            myUtils.insertTableEmployee("Stepan", "Developer","Mars");
-            myUtils.insertTableEmployee("Andriy", "DevOps","Mars");
-            myUtils.insertTableEmployee("Vasyl", "DevOps","Mars");
-            myUtils.insertTableEmployee("Ira", "Developer","MoonLight");
-            myUtils.insertTableEmployee("Anna", "QC","MoonLight");
-            myUtils.insertTableEmployee("Olya", "QC","Sun");
-            myUtils.insertTableEmployee("Maria", "QC","Mars");
+            myUtils.insertTableEmployee("Petro", "Developer", "Sun");
+            myUtils.insertTableEmployee("Stepan", "Developer", "Mars");
+            myUtils.insertTableEmployee("Andriy", "DevOps", "Mars");
+            myUtils.insertTableEmployee("Vasyl", "DevOps", "Mars");
+            myUtils.insertTableEmployee("Ira", "Developer", "MoonLight");
+            myUtils.insertTableEmployee("Anna", "QC", "MoonLight");
+            myUtils.insertTableEmployee("Olya", "QC", "Sun");
+            myUtils.insertTableEmployee("Maria", "QC", "Mars");
             List<String> employees = myUtils.getAllEmployee();
             System.out.println(employees.toString());
 

@@ -1,4 +1,4 @@
-package sprint01.task2;
+package com.softserve.edu.sprint01.task2;
 
 public class Employee {
     public String fullName;
@@ -18,9 +18,9 @@ public class Employee {
         String employeesInfo = "";
 
         int forIndex = 0;
-        for (Employee emp:employees) {
-            employeesInfo += (String.format("{fullName: \"%s\", salary: %s}", emp.fullName, emp.salary ));
-            if(forIndex != employees.length - 1) {
+        for (Employee emp : employees) {
+            employeesInfo += (String.format("{fullName: \"%s\", salary: %s}", emp.fullName, emp.salary));
+            if (forIndex != employees.length - 1) {
                 employeesInfo += ", ";
             }
             forIndex++;

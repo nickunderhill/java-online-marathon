@@ -1,4 +1,4 @@
-package sprint04.task1;
+package com.softserve.edu.sprint04.task1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,19 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class MyUtils {
-
-    public Map<String, List<String>> createNotebook(Map<String, String> phones) {
-
-        Map<String, List<String>> result = new HashMap<>();
-        for (String num : phones.keySet()) {
-            if (!result.containsKey(phones.get(num))) {
-                result.put(phones.get(num), new ArrayList<>());
-            }
-            result.get(phones.get(num)).add(num);
-        }
-        return result;
-
-    }
 
     //TEST
     public static void main(String[] args) {
@@ -37,5 +24,18 @@ public class MyUtils {
 
         // Resulting Map
         System.out.println("Resulting Map is : " + NewPhonesList);
+    }
+
+    public Map<String, List<String>> createNotebook(Map<String, String> phones) {
+
+        Map<String, List<String>> result = new HashMap<>();
+        for (String num : phones.keySet()) {
+            if (!result.containsKey(phones.get(num))) {
+                result.put(phones.get(num), new ArrayList<>());
+            }
+            result.get(phones.get(num)).add(num);
+        }
+        return result;
+
     }
 }

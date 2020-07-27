@@ -1,4 +1,4 @@
-package sprint02.task1;
+package com.softserve.edu.sprint02.task1;
 
 class Person {
     int age;
@@ -11,7 +11,9 @@ class Person {
         this.name = name;
     }
 
-    String getHealthStatus(){ return name +" " + healthInfo; }
+    String getHealthStatus() {
+        return name + " " + healthInfo;
+    }
 }
 
 class Child extends Person {

@@ -1,10 +1,16 @@
-package sprint07.task3;
+package com.softserve.edu.sprint07.task3;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Modifier;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+@interface TestSuite {
+    String[] value() default "";
+}
 
 public class TestSuitHandler {
     static void run(Class<?> clazz) {
@@ -42,14 +48,9 @@ public class TestSuitHandler {
             System.out.println(e);
         }
     }
+
     private static boolean validateMods(Class<?> clazz, String mName) throws NoSuchMethodException {
         return Modifier.isPublic(clazz.getDeclaredMethod(mName).getModifiers())
                 && !Modifier.isStatic(clazz.getDeclaredMethod(mName).getModifiers());
-        }
-}
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
-@interface TestSuite {
-    String[] value() default "";
+    }
 }

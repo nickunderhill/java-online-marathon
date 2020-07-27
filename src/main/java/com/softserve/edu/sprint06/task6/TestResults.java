@@ -1,4 +1,4 @@
-package sprint06.task6;
+package com.softserve.edu.sprint06.task6;
 
 import java.util.ArrayList;
 import java.util.List;

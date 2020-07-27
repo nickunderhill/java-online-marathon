@@ -1,4 +1,4 @@
-package sprint08.task3;
+package com.softserve.edu.sprint08.task3;
 
 public class ThreadExample {
     public static void threadRun() {

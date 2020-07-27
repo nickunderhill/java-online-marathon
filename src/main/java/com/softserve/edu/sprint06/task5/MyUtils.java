@@ -1,8 +1,8 @@
-package sprint06.task5;
+package com.softserve.edu.sprint06.task5;
 
 import java.util.HashSet;
-import java.util.function.Predicate;
 import java.util.Set;
+import java.util.function.Predicate;
 
 class MyUtils {
 

@@ -1,4 +1,4 @@
-package sprint04.task4;
+package com.softserve.edu.sprint04.task4;
 
 public class ArrayUtil {
 
@@ -10,7 +10,7 @@ public class ArrayUtil {
     //Test
     public static void main(String[] args) {
         String[] words = new String[3];
-        String wordFromSecondPosition = ArrayUtil.<String>setAndReturn(words, "Hello", 1);
+        String wordFromSecondPosition = ArrayUtil.setAndReturn(words, "Hello", 1);
         System.out.println(wordFromSecondPosition);
 
         Integer[] numbers = new Integer[3];

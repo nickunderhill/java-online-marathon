@@ -1,4 +1,4 @@
-package sprint06.task3;
+package com.softserve.edu.sprint06.task3;
 
 public class Person {
     String name;

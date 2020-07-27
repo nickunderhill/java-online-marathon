@@ -1,4 +1,4 @@
-package sprint09.task3;
+package com.softserve.edu.sprint09.task3;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -1,26 +1,25 @@
-package sprint06.task4;
+package com.softserve.edu.sprint06.task4;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@FunctionalInterface
+interface DecisionMethod<T, T1> {
+    boolean decide(String s, int i);
+}
 
 class Person {
 
     String name;
     String product = "product1";
     int discount = 10;
+    public DecisionMethod<String, Integer> goShopping = (p, d) -> {
+        return product.equals(p) && d > discount;
+    };
 
     Person(String name) {
         this.name = name;
     }
-
-    public DecisionMethod<String, Integer> goShopping = (p, d) -> {
-        return product.equals(p) && d > discount;
-    };
-}
-
-@FunctionalInterface
-interface DecisionMethod<T, T1> {
-    boolean decide(String s, int i);
 }
 
 class Shop {

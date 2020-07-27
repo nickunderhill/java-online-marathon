@@ -1,4 +1,4 @@
-package sprint01.task4;
+package com.softserve.edu.sprint01.task4;
 
 class Circle {
     private double radius;

@@ -1,4 +1,4 @@
-package sprint05.task1;
+package com.softserve.edu.sprint05.task1;
 
 public class Operation {
     public static int squareRectangle(int a, int b) {
@@ -19,7 +19,7 @@ public class Operation {
     public static void main(String[] args) {
         System.out.println(squareRectangle(1, 2));
 //        System.out.println(squareRectangle(1,-2));
-        System.out.println(squareRectangle(-1,2));
+        System.out.println(squareRectangle(-1, 2));
 //        System.out.println(squareRectangle(-1,-12));
 
         System.out.println(trySquareRectangle(1, 2));

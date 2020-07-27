@@ -1,4 +1,4 @@
-package sprint02.task2;
+package com.softserve.edu.sprint02.task2;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 interface DrinkReceipt {
     String getName();
+
     DrinkReceipt addComponent(String componentName, int componentCount);
 }
 
@@ -19,10 +20,10 @@ interface Rating {
 }
 
 class Caffee implements DrinkReceipt, DrinkPreparation, Rating {
+    private final Map<String, Integer> ingredients = new HashMap<>();
     // Code
     private String name;
     private int rating;
-    private final Map<String, Integer> ingredients = new HashMap<>();
 
     public Caffee() {
         this.name = "Caffee";
@@ -38,6 +39,10 @@ class Caffee implements DrinkReceipt, DrinkPreparation, Rating {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -56,10 +61,6 @@ class Caffee implements DrinkReceipt, DrinkPreparation, Rating {
     @Override
     public int getRating() {
         return this.rating;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Caffee setRating(int rating) {

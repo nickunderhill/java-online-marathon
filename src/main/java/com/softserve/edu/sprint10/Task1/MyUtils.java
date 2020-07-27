@@ -1,4 +1,4 @@
-package sprint10.Task1;
+package com.softserve.edu.sprint10.Task1;
 
 import java.sql.*;
 import java.util.ArrayList;

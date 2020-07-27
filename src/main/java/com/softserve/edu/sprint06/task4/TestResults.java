@@ -1,4 +1,4 @@
-package sprint06.task4;
+package com.softserve.edu.sprint06.task4;
 
 public class TestResults {
 

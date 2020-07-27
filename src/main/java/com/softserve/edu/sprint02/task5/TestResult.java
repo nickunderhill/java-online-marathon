@@ -1,4 +1,4 @@
-package sprint02.task5;
+package com.softserve.edu.sprint02.task5;
 
 import java.util.ArrayList;
 import java.util.List;

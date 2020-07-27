@@ -1,8 +1,14 @@
-package sprint04.task6;
+package com.softserve.edu.sprint04.task6;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
+
+enum Level {
+    JUNIOR,
+    MIDDLE,
+    SENIOR
+}
 
 class Person {
     protected String name;
@@ -28,7 +34,7 @@ class Person {
 }
 
 class Employee extends Person {
-    private double salary;
+    private final double salary;
 
     public Employee(String name, int age, double salary) {
         super(name, age);
@@ -46,7 +52,7 @@ class Employee extends Person {
 }
 
 class Developer extends Employee {
-    private Level level;
+    private final Level level;
 
     public Developer(String name, int age, double salary, Level level) {
         super(name, age, salary);
@@ -63,12 +69,6 @@ class Developer extends Employee {
     }
 }
 
-enum Level {
-    JUNIOR,
-    MIDDLE,
-    SENIOR
-}
-
 class PersonComparator implements Comparator<Person> {
 
     @Override
@@ -80,16 +80,16 @@ class PersonComparator implements Comparator<Person> {
     }
 }
 
-class EmployeeComparator implements Comparator<Employee>  {
+class EmployeeComparator implements Comparator<Employee> {
 
     @Override
     public int compare(Employee o1, Employee o2) {
         if (!o1.getName().equals(o2.getName())) {
             return o1.getName().compareTo(o2.getName());
-        } else if(o1.getName().equals(o2.getName()) && o1.age != o2.age) {
+        } else if (o1.getName().equals(o2.getName()) && o1.age != o2.age) {
             return o1.age - o2.age;
         }
-        return (int)o1.getSalary() - (int)o2.getSalary();
+        return (int) o1.getSalary() - (int) o2.getSalary();
     }
 }
 
@@ -99,12 +99,12 @@ class DeveloperComparator implements Comparator<Developer> {
     public int compare(Developer o1, Developer o2) {
         if (!o1.getName().equals(o2.getName())) {
             return o1.getName().compareTo(o2.getName());
-        } else if(o1.getName().equals(o2.getName()) && o1.age != o2.age) {
+        } else if (o1.getName().equals(o2.getName()) && o1.age != o2.age) {
             return o1.age - o2.age;
         } else if (o1.getName().equals(o2.getName()) && o1.age == o2.age && !(o1.getLevel().equals(o2.getLevel()))) {
             return o1.getLevel().compareTo(o2.getLevel());
         }
-        return (int)o1.getSalary() - (int)o2.getSalary();
+        return (int) o1.getSalary() - (int) o2.getSalary();
     }
 }
 

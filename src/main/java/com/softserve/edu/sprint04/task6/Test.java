@@ -1,4 +1,4 @@
-package sprint04.task6;
+package com.softserve.edu.sprint04.task6;
 
 import java.util.Comparator;
 

@@ -1,6 +1,15 @@
-package sprint03.task6;
+package com.softserve.edu.sprint03.task6;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Objects;
+
+enum SortOrder {
+    ASC,
+    DESC
+}
+
 @SuppressWarnings("unchecked")
 class AddressBook implements Iterable {
     private NameAddressPair[] addressBook;
@@ -44,8 +53,8 @@ class AddressBook implements Iterable {
     public boolean delete(String firstName, String lastName) {
         int i = findIndex(firstName, lastName);
         if (i > -1) {
-            System.arraycopy(addressBook, i+1, addressBook, i, size()-i-1);
-            addressBook[size()-1] = null;
+            System.arraycopy(addressBook, i + 1, addressBook, i, size() - i - 1);
+            addressBook[size() - 1] = null;
             counter--;
             return true;
         }
@@ -59,8 +68,9 @@ class AddressBook implements Iterable {
     /**
      * Loops through addressList to find person by given keys pair.
      * Returns index if found and -1 if not.
+     *
      * @param firstName - first name to search
-     * @param lastName - last name to search
+     * @param lastName  - last name to search
      * @return int
      */
     private int findIndex(String firstName, String lastName) {
@@ -82,7 +92,7 @@ class AddressBook implements Iterable {
                 if (result == 0) {
                     result = o1.person.lastName.compareTo(o2.person.lastName);
                 }
-                return sortOrder == sortOrder.ASC ? result : -result;
+                return sortOrder == SortOrder.ASC ? result : -result;
             }
         });
 
@@ -111,8 +121,8 @@ class AddressBook implements Iterable {
         }
 
         private static class Person {
-            private String firstName;
-            private String lastName;
+            private final String firstName;
+            private final String lastName;
 
             private Person(String firstName, String lastName) {
                 this.firstName = firstName;
@@ -134,16 +144,14 @@ class AddressBook implements Iterable {
             }
         }
     }
-@SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
     private class AddressBookIterator implements Iterator {
         private int counter = 0;
 
         @Override
         public boolean hasNext() {
-            if (counter < size() && addressBook[counter] != null)
-                return true;
-            else
-                return false;
+            return counter < size() && addressBook[counter] != null;
         }
 
         @Override
@@ -161,10 +169,5 @@ class AddressBook implements Iterable {
             );
         }
     }
-}
-
-enum SortOrder {
-    ASC,
-    DESC;
 }
 

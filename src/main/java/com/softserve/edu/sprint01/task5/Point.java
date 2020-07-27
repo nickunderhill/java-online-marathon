@@ -1,16 +1,27 @@
-package sprint01.task5;
+package com.softserve.edu.sprint01.task5;
 
 public class Point {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    //debug
+    public static void main(String[] args) {
+        Point p1 = new Point(3, 4);
+        Point p2 = new Point(7, 1);
+
+        System.out.println(p1.distance(7, 1));
+        System.out.println(p2.distance(p1));
+        System.out.println(p1.distance());
+        System.out.println(p2.distance());
+    }
+
     public int[] getXYPair() {
-        return new int[]{x,y};
+        return new int[]{x, y};
     }
 
     public double distance(int x, int y) {
@@ -27,16 +38,5 @@ public class Point {
         double origin = 0;
         return Math.sqrt((origin - this.y) * (origin - this.y) + (origin - this.x) * (origin - this.x));
 
-    }
-
-    //debug
-    public static void main(String[] args) {
-        Point p1 = new Point(3,4);
-        Point p2 = new Point(7,1);
-
-        System.out.println(p1.distance(7,1));
-        System.out.println(p2.distance(p1));
-        System.out.println(p1.distance());
-        System.out.println(p2.distance());
     }
 }

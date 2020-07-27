@@ -1,8 +1,8 @@
-package sprint05.task5;
+package com.softserve.edu.sprint05.task5;
 
 class CheckingAccount {
     private double balance;
-    private int number;
+    private final int number;
 
     public CheckingAccount(int number) {
         this.number = number;
@@ -13,7 +13,7 @@ class CheckingAccount {
     }
 
     public void withdraw(double amount) throws InsufficientAmountException {
-        if(amount <= balance) {
+        if (amount <= balance) {
             balance -= amount;
         } else {
             double needs = amount - balance;
@@ -21,6 +21,7 @@ class CheckingAccount {
         }
     }
 }
+
 class BankDemo {
     public static void doOperations() {
         CheckingAccount c = new CheckingAccount(101);
@@ -44,6 +45,7 @@ class BankDemo {
 //Task Answer Body Start
 class InsufficientAmountException extends Exception {
     double amount;
+
     public InsufficientAmountException(double amount) {
         this.amount = amount;
     }

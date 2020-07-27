@@ -1,22 +1,6 @@
-package sprint04.task5;
+package com.softserve.edu.sprint04.task5;
 
 public class ArrayUtil {
-
-    static class Array<T> {
-        private T[] array;
-
-        public Array(T[] array) {
-            this.array = array;
-        }
-
-        public T get(int index) {
-            return array[index];
-        }
-
-        public int length() {
-            return array.length;
-        }
-    }
 
     static <T extends Number> double averageValue(Array<T> array) {
         double sum = 0;
@@ -35,5 +19,21 @@ public class ArrayUtil {
         Array<Double> set2 = new Array<>(new Double[]{1.0, 3.0, 5.0});
         double averageValue2 = ArrayUtil.averageValue(set1);
         System.out.println(averageValue1);
+    }
+
+    static class Array<T> {
+        private final T[] array;
+
+        public Array(T[] array) {
+            this.array = array;
+        }
+
+        public T get(int index) {
+            return array[index];
+        }
+
+        public int length() {
+            return array.length;
+        }
     }
 }

@@ -1,4 +1,4 @@
-package sprint03.task1;
+package com.softserve.edu.sprint03.task1;
 
 class Pizza {
     private String cheese;
@@ -8,6 +8,11 @@ class Pizza {
     private String mushroom;
 
     private Pizza() {
+    }
+
+    public static PizzaBuilder base() {
+        return new PizzaBuilder();
+        // Describe PizzaBuilder class here
     }
 
     public String getCheese() {
@@ -30,19 +35,13 @@ class Pizza {
         return mushroom;
     }
 
-    public static PizzaBuilder base() {
-        return new PizzaBuilder();
-        // Describe PizzaBuilder class here
-    }
-
     public static class PizzaBuilder {
 
-        private Pizza pizza;
+        private final Pizza pizza;
 
         private PizzaBuilder() {
             pizza = new Pizza();
         }
-
 
 
         public PizzaBuilder addCheese(String cheese) {

@@ -1,4 +1,4 @@
-package sprint01.task1;
+package com.softserve.edu.sprint01.task1;
 
 public class Pet {
     public String name;

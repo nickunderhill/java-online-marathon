@@ -1,4 +1,4 @@
-package sprint08.task4;
+package com.softserve.edu.sprint08.task4;
 
 class MyThreads {
     public final static Object den = new Object();

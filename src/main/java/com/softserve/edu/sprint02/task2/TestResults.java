@@ -1,4 +1,4 @@
-package sprint02.task2;
+package com.softserve.edu.sprint02.task2;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,13 +12,13 @@ public class TestResults {
         List<Caffee> originList = new java.util.ArrayList<>(Collections.emptyList());
 
         originList.add(new Espresso("Espresso", 8));
-        originList.add(new Cappuccino("Cappuccino",10));
+        originList.add(new Cappuccino("Cappuccino", 10));
         originList.add(new Espresso().setRating(10));
         originList.add(new Cappuccino().setRating(6));
         originList.add(new Caffee().setRating(6));
 
-        for (Caffee drink: originList
-             ) {
+        for (Caffee drink : originList
+        ) {
             System.out.print("Drink name: " + drink.getName());
             System.out.print(", Receipt: " + drink.getIngredients().toString());
             System.out.print(", Rating: " + drink.getRating() + "\n");

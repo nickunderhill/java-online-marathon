@@ -1,4 +1,4 @@
-package sprint09.task2;
+package com.softserve.edu.sprint09.task2;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

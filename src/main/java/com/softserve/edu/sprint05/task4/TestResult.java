@@ -1,4 +1,4 @@
-package sprint05.task4;
+package com.softserve.edu.sprint05.task4;
 
 public class TestResult {
     public static void main(String[] args) throws NameException, CodeException {
@@ -6,7 +6,6 @@ public class TestResult {
         Person p1 = Person.buildPerson("John", "Doe", "1111111111");
 //        Person p3 = Person.buildPerson("---", "Ln", "1111111111");
         Person p4 = Person.buildPerson("Kelly", "Oros", "2345765678");
-
 
 
     }

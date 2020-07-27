@@ -1,10 +1,10 @@
-package sprint02.task3;
+package com.softserve.edu.sprint02.task3;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 class Person {
-    private String name;
+    private final String name;
 
     public Person(String name) {
         this.name = name;
@@ -29,8 +29,8 @@ class Person {
 }
 
 class Student extends Person {
-    private String studyPlace;
-    private int studyYears;
+    private final String studyPlace;
+    private final int studyYears;
 
     public Student(String name, String studyPlace, int studyYears) {
         super(name);
@@ -48,8 +48,8 @@ class Student extends Person {
 }
 
 class Worker extends Person {
-    private String workPosition;
-    private int experienceYears;
+    private final String workPosition;
+    private final int experienceYears;
 
     public Worker(String name, String workPosition, int experienceYears) {
         super(name);

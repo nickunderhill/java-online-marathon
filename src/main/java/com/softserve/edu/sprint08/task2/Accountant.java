@@ -1,6 +1,6 @@
-package sprint08.task2;
+package com.softserve.edu.sprint08.task2;
 
-import sprint08.task1.ParallelCalculator;
+import com.softserve.edu.sprint08.task1.ParallelCalculator;
 
 public class Accountant {
 

@@ -1,4 +1,4 @@
-package sprint05.task4;
+package com.softserve.edu.sprint05.task4;
 
 import java.util.Objects;
 
@@ -6,30 +6,6 @@ public class Person {
     private String firstName;
     private String lastName;
     private String idCode;
-
-    public void setFirstName(String firstName) throws NameException {
-        if (validateName(firstName)) {
-            this.firstName = firstName;
-        } else throw new NameException("Incorrect value " +
-                firstName +
-                " for firstName (should start from upper case and contains only alphabetic characters and symbols -, _)");
-    }
-
-    public void setLastName(String lastName) throws NameException {
-        if (validateName(lastName)) {
-            this.lastName = lastName;
-        } else throw new NameException("Incorrect value " +
-                lastName +
-                " for lastName (should start from upper case and contains only alphabetic characters and symbols -, _)");
-    }
-
-    public void setIdCode(String idCode) throws CodeException {
-        if (validateId(idCode)) {
-            this.idCode = idCode;
-        } else throw new CodeException("Incorrect value " +
-                idCode +
-                " for code (should contains exactly 10 digits)");
-    }
 
     static Person buildPerson(String firstName, String lastName, String idCode) throws IllegalArgumentException {
         Person p = new Person();
@@ -54,6 +30,30 @@ public class Person {
         } else {
             throw new IllegalArgumentException(exceptionsMessages);
         }
+    }
+
+    public void setFirstName(String firstName) throws NameException {
+        if (validateName(firstName)) {
+            this.firstName = firstName;
+        } else throw new NameException("Incorrect value " +
+                firstName +
+                " for firstName (should start from upper case and contains only alphabetic characters and symbols -, _)");
+    }
+
+    public void setLastName(String lastName) throws NameException {
+        if (validateName(lastName)) {
+            this.lastName = lastName;
+        } else throw new NameException("Incorrect value " +
+                lastName +
+                " for lastName (should start from upper case and contains only alphabetic characters and symbols -, _)");
+    }
+
+    public void setIdCode(String idCode) throws CodeException {
+        if (validateId(idCode)) {
+            this.idCode = idCode;
+        } else throw new CodeException("Incorrect value " +
+                idCode +
+                " for code (should contains exactly 10 digits)");
     }
 
     @Override

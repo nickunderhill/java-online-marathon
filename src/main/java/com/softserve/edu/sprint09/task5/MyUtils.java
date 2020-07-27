@@ -1,4 +1,4 @@
-package sprint09.task5;
+package com.softserve.edu.sprint09.task5;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,21 +7,6 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class MyUtils {
-    public Stream<String> nameList(Map<String, Stream<String>> map) {
-        return map
-                .values()
-                .stream()
-                .flatMap(s -> s)
-                .filter(Objects::nonNull)
-                .map(s -> s.replace(" ", ""))
-                .filter(s -> !s.equals(""))
-                .map(
-                        name -> name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase()
-                )
-                .distinct()
-                .sorted();
-    }
-
     //Tests
     public static void main(String[] args) {
         //Test1
@@ -56,5 +41,20 @@ public class MyUtils {
             System.out.println("But received:");
             System.out.println(Arrays.toString(res1));
         }
+    }
+
+    public Stream<String> nameList(Map<String, Stream<String>> map) {
+        return map
+                .values()
+                .stream()
+                .flatMap(s -> s)
+                .filter(Objects::nonNull)
+                .map(s -> s.replace(" ", ""))
+                .filter(s -> !s.equals(""))
+                .map(
+                        name -> name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase()
+                )
+                .distinct()
+                .sorted();
     }
 }

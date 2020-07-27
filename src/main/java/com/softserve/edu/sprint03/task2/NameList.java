@@ -1,7 +1,18 @@
-package sprint03.task2;
+package com.softserve.edu.sprint03.task2;
 
 class NameList {
-    private String[] names = {"Mike", "Emily", "Nick", "Patric", "Sara"};
+    private final String[] names = {"Mike", "Emily", "Nick", "Patric", "Sara"};
+
+    public static void main(String[] args) {
+        NameList n = new NameList();
+        NameList.Iterator iterator = new NameList().getIterator();
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+    }
 
     public Iterator getIterator() {
         return new Iterator();
@@ -24,17 +35,6 @@ class NameList {
                 return names[counter++];
             } else throw new IndexOutOfBoundsException();
         }
-    }
-
-    public static void main(String[] args) {
-        NameList n = new NameList();
-        NameList.Iterator iterator = new NameList().getIterator();
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
     }
 
 }

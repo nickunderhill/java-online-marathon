@@ -1,4 +1,4 @@
-package sprint09.task1;
+package com.softserve.edu.sprint09.task1;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,4 @@
-package sprint03.task6;
-
-import java.util.Iterator;
+package com.softserve.edu.sprint03.task6;
 
 public class TestResults {
 
@@ -30,14 +28,6 @@ public class TestResults {
         System.out.println("--Sort DESC");
         ab.sortedBy(SortOrder.DESC);
         ab.forEach(System.out::println);
-
-
-
-
-
-
-
-
 
 
 //        ab.forEach(System.out::println);

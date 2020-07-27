@@ -1,4 +1,4 @@
-package sprint06.task2;
+package com.softserve.edu.sprint06.task2;
 
 import java.util.Arrays;
 import java.util.function.Consumer;

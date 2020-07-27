@@ -1,9 +1,17 @@
-package sprint05.task2;
+package com.softserve.edu.sprint05.task2;
+
+enum Color {
+    WHITE, RED, BLUE
+}
+
+enum Type {
+    RARE, ORDINARY
+}
 
 public class Plant {
-    private String name;
-    private Color color;
-    private Type type;
+    private final String name;
+    private final Color color;
+    private final Type type;
 
     public Plant(String type, String color, String name) throws TypeException, ColorException {
         try {
@@ -40,14 +48,6 @@ public class Plant {
                 '}';
     }
 
-}
-
-enum Color {
-    WHITE, RED, BLUE
-}
-
-enum Type {
-    RARE, ORDINARY
 }
 
 class ColorException extends Exception {
