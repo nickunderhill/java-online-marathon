@@ -17,6 +17,7 @@ src/test/*
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+/target
 
 # Generated files
 .idea/**/contentModel.xml
