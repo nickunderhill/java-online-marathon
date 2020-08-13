@@ -10,3 +10,12 @@
 [submodule "JOM-Sprint15"]
 	path = JOM-Sprint15
 	url = https://github.com/nickunderhill/JOM-Sprint15
+[submodule "JOM-Sprint16"]
+	path = JOM-Sprint16
+	url = https://github.com/nickunderhill/JOM-Sprint16.git
+[submodule "JOM-Sprint17"]
+	path = JOM-Sprint17
+	url = https://github.com/nickunderhill/JOM-Sprint17.git
+[submodule "JOM-Sprint18"]
+	path = JOM-Sprint18
+	url = https://github.com/nickunderhill/JOM-Sprint18.git
